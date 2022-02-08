@@ -1,0 +1,27 @@
+@use './variables.scss' as *;
+
+@mixin center() {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+@mixin generalButton() {
+	background-color: transparent;
+	border-width: 2px;
+	border-style: solid;
+	padding: 1rem 2rem;
+	border-radius: 0.5rem;
+	font-weight: bold;
+	text-decoration: none;
+	font-size: 1rem;
+	color: inherit;
+	border-color: inherit;
+	cursor: pointer;
+	transition: 0.2s;
+
+	&:hover {
+		color: $accent;
+		border-color: $accent !important;
+	}
+}

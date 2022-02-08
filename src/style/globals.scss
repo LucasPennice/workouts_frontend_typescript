@@ -1,0 +1,95 @@
+@use './index' as *;
+@forward './sidenav';
+
+.mainAppContainer {
+	width: 100vw;
+	height: 100vh;
+	@include center();
+	transition: 0.3s;
+
+	.mainAppContent {
+		@include center();
+		width: 98%;
+		height: 98%;
+		border-radius: 1rem;
+		transition: 0.3s;
+		position: relative;
+		animation: animatedBackground 300s linear infinite alternate;
+
+		.toggleSideNav {
+			position: absolute;
+			top: 1rem;
+			left: 1rem;
+			font-size: 1rem;
+			padding: 0.8rem;
+			z-index: 5;
+		}
+	}
+}
+.timer_container {
+	@include center();
+	font-size: 5rem;
+	font-weight: bold;
+	gap: 1rem;
+	cursor: default;
+
+	aside {
+		@include center();
+		flex-direction: column;
+
+		&:hover button {
+			transition: 0.2s;
+			opacity: 1;
+		}
+
+		button {
+			opacity: 0;
+			@include generalButton();
+			padding: 0.7rem;
+		}
+	}
+}
+
+.content_container {
+	height: 100%;
+	width: 100%;
+	@include center();
+	flex-direction: column;
+	justify-content: space-evenly;
+	animation: appear-bottom 0.3s;
+	position: relative;
+}
+.buttons_container {
+	@include center();
+	flex-wrap: wrap;
+	gap: 2rem;
+
+	a,
+	button {
+		@include generalButton();
+	}
+}
+
+.generalBtn {
+	@include generalButton();
+}
+.icon {
+	@include center();
+	font-size: 1.5rem;
+	border-radius: 50%;
+	padding: 1rem;
+	border: none;
+	cursor: pointer;
+	transition: 0.15s;
+	&:hover {
+		transform: translateY(-0.2rem);
+	}
+}
+
+.myWorkouts_clockIcon {
+	font-size: 1.2rem;
+	padding: 0.7rem;
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+}
