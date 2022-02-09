@@ -18,6 +18,14 @@
     transform: translateY(0rem);
   }
 }
+@keyframes shrink {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 1rem;
+  }
+}
 @keyframes appear-opacity {
   from {
     opacity: 0;
@@ -52,6 +60,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  gap: 1rem;
   align-items: center;
   position: absolute;
   left: 0;
@@ -87,6 +96,15 @@
 .sideBar_container-closed a:last-of-type {
   margin-bottom: 3rem;
 }
+.sideBar_container .a-active,
+.sideBar_container-closed .a-active {
+  transition: 0.15s;
+  opacity: 0.5;
+}
+.sideBar_container .a-active::before,
+.sideBar_container-closed .a-active::before {
+  background-color: transparent;
+}
 
 .sideBar_container {
   animation: appear-left 0.25s;
@@ -96,6 +114,13 @@
   opacity: 0;
   transform: scale(0);
   transition: opacity 0.15s 0s, transform 0s 0.15s;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .mainAppContainer {
@@ -126,6 +151,11 @@
   z-index: 5;
 }
 
+@media (max-width: 500px) {
+  .mainAppContent {
+    animation: animatedBackground 100s linear infinite alternate !important;
+  }
+}
 .timer_container {
   display: flex;
   align-items: center;
@@ -164,6 +194,12 @@
 .timer_container aside button:hover {
   color: #f53838;
   border-color: #f53838 !important;
+}
+.timer_container aside section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .content_container {
@@ -246,6 +282,13 @@
   position: absolute;
   top: 1rem;
   right: 1rem;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
 
 /*# sourceMappingURL=globals.css.map */

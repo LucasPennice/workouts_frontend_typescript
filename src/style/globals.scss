@@ -1,6 +1,12 @@
 @use './index' as *;
 @forward './sidenav';
 
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	-webkit-tap-highlight-color: transparent;
+}
 .mainAppContainer {
 	width: 100vw;
 	height: 100vh;
@@ -26,6 +32,12 @@
 		}
 	}
 }
+
+@media (max-width: $onMobile) {
+	.mainAppContent {
+		animation: animatedBackground 100s linear infinite alternate !important;
+	}
+}
 .timer_container {
 	@include center();
 	font-size: 5rem;
@@ -46,6 +58,10 @@
 			opacity: 0;
 			@include generalButton();
 			padding: 0.7rem;
+		}
+		section {
+			@include center();
+			gap: 1rem;
 		}
 	}
 }
@@ -92,4 +108,9 @@
 	position: absolute;
 	top: 1rem;
 	right: 1rem;
+}
+
+.flex {
+	@include center();
+	gap: 1rem;
 }

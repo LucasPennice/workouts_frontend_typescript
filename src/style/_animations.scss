@@ -19,6 +19,15 @@
 	}
 }
 
+@keyframes shrink {
+	from {
+		width: 100%;
+	}
+	to {
+		width: 1rem;
+	}
+}
+
 @keyframes appear-opacity {
 	from {
 		opacity: 0;

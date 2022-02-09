@@ -43,6 +43,7 @@ const themes: themesObj = { light: lightTheme, dark: darkTheme };
 
 const App = () => {
 	const [theme, setTheme] = useState('dark');
+	const [timerValue, setTimerValue] = useState(0);
 	return (
 		<BrowserRouter>
 			<MainAppContainer
@@ -55,7 +56,12 @@ const App = () => {
 						path={ROUTES.HOME}
 						element={<WelcomeScreen currentTheme={themes[theme]} />}
 					/>
-					<Route path={ROUTES.TIMER} element={<Timer />} />
+					<Route
+						path={ROUTES.TIMER}
+						element={
+							<Timer timerValue={timerValue} setTimerValue={setTimerValue} />
+						}
+					/>
 					<Route path={ROUTES.CRONOMETER} element={<Cronometer />} />
 					<Route
 						path={ROUTES.MY_WORKOUTS}
