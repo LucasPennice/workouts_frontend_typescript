@@ -1,0 +1,49 @@
+@use './index' as *;
+
+$userNameHeight: 3rem;
+$userNameBottomMargin: 2rem;
+
+.profile_container {
+	background-color: transparentize($color: $gray, $amount: 0.5);
+	backdrop-filter: blur(2px);
+	border-radius: $radius;
+	width: 90%;
+	height: 90%;
+	padding: 2rem;
+
+	.profile_userName {
+		@include center();
+		gap: 1rem;
+		height: $userNameHeight;
+		margin-bottom: $userNameBottomMargin;
+	}
+
+	.profileContent_container {
+		@include center();
+		width: 100%;
+		height: calc(100% - $userNameHeight - $userNameBottomMargin);
+
+		.profileStats_container {
+			height: 100%;
+			width: 30%;
+			@include center();
+			justify-content: start;
+			flex-direction: column;
+			.pieChart_container {
+				@include center();
+				width: 60%;
+				margin-bottom: 1.5rem;
+			}
+
+			h2 {
+				font-weight: 600;
+				font-size: 1rem;
+			}
+		}
+		.profileWorkouts_container {
+			height: 100%;
+			width: 70%;
+			background-color: green;
+		}
+	}
+}

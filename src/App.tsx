@@ -9,6 +9,8 @@ import { ROUTES } from './routes';
 import Timer from './components/timer/Timer';
 import Cronometer from './components/cronometer/Cronometer';
 import MyWorkouts from './components/myWorkouts/MyWorkouts';
+import UserProfile from './components/userProfile/userProfile';
+import userInfo from './mockData.json';
 
 interface Theme {
 	backgroundColor: string;
@@ -44,28 +46,54 @@ const themes: themesObj = { light: lightTheme, dark: darkTheme };
 const App = () => {
 	const [theme, setTheme] = useState('dark');
 	const [timerValue, setTimerValue] = useState(0);
+	const [cronometerValue, setCronometerValue] = useState(0);
+	const [isUserLogged, setIsUserLogged] = useState(true);
+	//REEMPLAZAR CON LA LOGICA DE VERDAD DESPUES
+	const { HOME, TIMER, CRONOMETER, MY_WORKOUTS, USER_PROFILE } = ROUTES;
+
 	return (
 		<BrowserRouter>
 			<MainAppContainer
 				theme={theme}
 				setTheme={setTheme}
 				currentTheme={themes[theme]}
+				isUserLogged={isUserLogged}
 			>
 				<Routes>
 					<Route
-						path={ROUTES.HOME}
+						path={HOME}
 						element={<WelcomeScreen currentTheme={themes[theme]} />}
 					/>
 					<Route
-						path={ROUTES.TIMER}
+						path={TIMER}
 						element={
 							<Timer timerValue={timerValue} setTimerValue={setTimerValue} />
 						}
 					/>
-					<Route path={ROUTES.CRONOMETER} element={<Cronometer />} />
 					<Route
-						path={ROUTES.MY_WORKOUTS}
-						element={<MyWorkouts theme={theme} currentTheme={themes[theme]} />}
+						path={CRONOMETER}
+						element={
+							<Cronometer
+								cronometerValue={cronometerValue}
+								setCronometerValue={setCronometerValue}
+							/>
+						}
+					/>
+					<Route
+						path={MY_WORKOUTS}
+						element={
+							<MyWorkouts
+								theme={theme}
+								currentTheme={themes[theme]}
+								isUserLogged={isUserLogged}
+							/>
+						}
+					/>
+					<Route
+						path={USER_PROFILE}
+						element={
+							<UserProfile userInfo={userInfo} currentTheme={themes[theme]} />
+						}
 					/>
 				</Routes>
 			</MainAppContainer>

@@ -3,17 +3,16 @@ import IconButton from '../IconButton';
 type AppProps = {
 	theme: string;
 	currentTheme: any;
+	isUserLogged: boolean;
 };
 const colorModeIcons = {
 	light: <GiAlarmClock />,
 	dark: <GiAlarmClock />,
 };
-const MyRoutines = ({ theme, currentTheme }: AppProps) => {
-	const isUserLogged = true;
-
+const MyRoutines = ({ theme, currentTheme, isUserLogged }: AppProps) => {
 	const renderLoginSection = () => {
 		return (
-			<div>
+			<div className="logInWithGoogle">
 				<h2>You need to log in</h2>
 				<button className="generalBtn">Click here to log in with google</button>
 			</div>
@@ -29,7 +28,7 @@ const MyRoutines = ({ theme, currentTheme }: AppProps) => {
 				extraClass="myWorkouts_clockIcon"
 			/>
 			<h1>MY WORKOUTS</h1>
-			{isUserLogged ? <h2>blabla</h2> : renderLoginSection()}
+			{isUserLogged ? <h2>logged</h2> : renderLoginSection()}
 		</div>
 	);
 };

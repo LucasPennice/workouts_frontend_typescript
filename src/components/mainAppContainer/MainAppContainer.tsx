@@ -2,11 +2,14 @@ import { useState } from 'react';
 import IconButton from '../IconButton';
 import SideBar from '../sideBar/SideBar';
 import { GiHamburgerMenu } from 'react-icons/gi';
+import userInfo from '../../mockData.json';
+import React from 'react';
 type AppProps = {
 	children: JSX.Element;
 	theme: any;
 	setTheme: React.Dispatch<React.SetStateAction<string>>;
 	currentTheme: any;
+	isUserLogged: boolean;
 };
 
 const colorModeIcons = {
@@ -18,6 +21,7 @@ const MainAppContainer = ({
 	children,
 	theme,
 	setTheme,
+	isUserLogged,
 	currentTheme,
 }: AppProps) => {
 	const {
@@ -57,6 +61,7 @@ const MainAppContainer = ({
 					setTheme={setTheme}
 					open={open}
 					currentTheme={currentTheme}
+					isUserLogged={isUserLogged}
 				/>
 				{children}
 			</div>

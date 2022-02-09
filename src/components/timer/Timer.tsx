@@ -1,11 +1,7 @@
-import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
-import { useState, useEffect } from 'react';
-import {
-	checkIfSingleDigit,
-	validateTimingOperation,
-	integerToTimeArray,
-	determineValueOfOperation,
-} from './TimerLogic';
+import { useState } from 'react';
+import { resetTimer } from './TimerLogic';
+import Clock from '../generalComponents/Clock';
+import GeneralButton from '../generalComponents/GeneralButton';
 
 type propType = {
 	timerValue: number;
@@ -14,88 +10,36 @@ type propType = {
 
 const Timer = ({ timerValue, setTimerValue }: propType) => {
 	const [isTimerRunning, setIsTimerRunning] = useState(false);
-
 	const whenTimerRunning = () => {
 		setTimerValue(timerValue - 1);
 	};
 
-	const timerFinished = () => {
-		alert('ding');
-	};
-
-	const resetTimer = () => {
-		setIsTimerRunning(false);
-		setTimerValue(0);
-	};
-
-	useEffect(() => {
-		let intervalId: any;
-		if (isTimerRunning && timerValue != 0) {
-			intervalId = setInterval(whenTimerRunning, 1000);
-		}
-		if (isTimerRunning && timerValue == 0) {
-			setIsTimerRunning(false);
-			timerFinished();
-		}
-		return () => {
-			clearInterval(intervalId);
-		};
-	}, [isTimerRunning, timerValue]);
-
-	const modifyTime = (i: number, position: string, action: string) => {
-		let value = determineValueOfOperation(i, position);
-		if (action === 'take') value! *= -1;
-		if (validateTimingOperation(value!, timerValue)) {
-			setTimerValue(timerValue + value!);
-		} else {
-			console.error('Tried to make time negative or too high');
-		}
-	};
-
-	const renderTimer = () => {
-		return integerToTimeArray(timerValue).map((item, i) => {
-			return (
-				<div className="flex" key={i}>
-					<aside>
-						<section>
-							<button onClick={() => modifyTime(i, 'left', 'add')}>
-								<IoIosArrowUp />
-							</button>
-							<button onClick={() => modifyTime(i, 'right', 'add')}>
-								<IoIosArrowUp />
-							</button>
-						</section>
-
-						{checkIfSingleDigit(item) ? `0${item}` : `${item}`}
-						<section>
-							<button onClick={() => modifyTime(i, 'left', 'take')}>
-								<IoIosArrowDown />
-							</button>
-							<button onClick={() => modifyTime(i, 'right', 'take')}>
-								<IoIosArrowDown />
-							</button>
-						</section>
-					</aside>
-					{i === 0 ? <aside>:</aside> : <></>}
-				</div>
-			);
-		});
+	const startTimer = () => {
+		if (timerValue != 0) setIsTimerRunning(!isTimerRunning);
 	};
 
 	return (
 		<div className="content_container">
 			<h1>TIMER</h1>
-			<section className="timer_container">{renderTimer()}</section>
+
+			<Clock
+				timerValue={timerValue}
+				setTimerValue={setTimerValue}
+				whenTimerRunning={whenTimerRunning}
+				isTimerRunning={isTimerRunning}
+				setIsTimerRunning={setIsTimerRunning}
+				displayButtons={true}
+			/>
 
 			<div className="buttons_container">
-				<button onClick={resetTimer}>Reset</button>
-				<button
-					onClick={() => {
-						if (timerValue != 0) setIsTimerRunning(!isTimerRunning);
-					}}
-				>
-					{isTimerRunning ? 'Pause timer' : 'Start Timer'}
-				</button>
+				<GeneralButton
+					text="Reset"
+					onClickFunction={() => resetTimer(setIsTimerRunning, setTimerValue)}
+				/>
+				<GeneralButton
+					text={isTimerRunning ? 'Pause timer' : 'Start Timer'}
+					onClickFunction={startTimer}
+				/>
 			</div>
 		</div>
 	);
