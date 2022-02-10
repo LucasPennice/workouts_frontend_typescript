@@ -60,6 +60,7 @@ const MainAppContainer = ({
 					theme={theme}
 					setTheme={setTheme}
 					open={open}
+					setOpen={setOpen}
 					currentTheme={currentTheme}
 					isUserLogged={isUserLogged}
 				/>

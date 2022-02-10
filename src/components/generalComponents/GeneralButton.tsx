@@ -1,10 +1,19 @@
 type buttonProps = {
 	text: any;
 	onClickFunction: () => void;
+	disabled?: boolean;
 };
-const GeneralButton = ({ onClickFunction, text }: buttonProps) => {
+const GeneralButton = ({
+	onClickFunction,
+	text,
+	disabled = false,
+}: buttonProps) => {
 	return (
-		<button className="generalBtn" onClick={onClickFunction}>
+		<button
+			className={disabled ? 'generalBtn_disabled' : 'generalBtn'}
+			onClick={onClickFunction}
+			disabled={disabled}
+		>
 			{text}
 		</button>
 	);

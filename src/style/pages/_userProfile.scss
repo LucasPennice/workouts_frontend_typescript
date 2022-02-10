@@ -1,0 +1,117 @@
+@use '../index' as *;
+
+$userNameHeight: 3rem;
+$userNameBottomMargin: 2rem;
+
+.profile_container {
+	background-color: transparentize($color: $gray, $amount: 0.5);
+	backdrop-filter: blur(2px);
+	border-radius: $radius;
+	width: 90%;
+	min-height: 85vh;
+	padding: 2rem;
+
+	.profile_userName {
+		@include center();
+		gap: 1rem;
+		height: $userNameHeight;
+		margin-bottom: $userNameBottomMargin;
+	}
+
+	.profileContent_container {
+		@include center();
+		justify-content: space-between;
+		width: 100%;
+		height: calc(100% - $userNameHeight - $userNameBottomMargin);
+
+		.profileStats_container {
+			height: 100%;
+			width: 30%;
+			@include center();
+			justify-content: space-between;
+			flex-direction: column;
+			text-align: center;
+			.userPieChartContainer {
+				width: 100%;
+				@include center();
+				flex-direction: column;
+
+				.pieChart {
+					@include center();
+					width: 60%;
+					margin-bottom: 1.5rem;
+					clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+				}
+			}
+
+			h2 {
+				font-weight: 600;
+				font-size: 1rem;
+			}
+			.currentPoints {
+				margin: 3rem 0rem;
+				span {
+					@include center();
+					opacity: 0;
+					margin-top: 1rem;
+					padding: 0.2rem 0rem;
+					border-radius: $radius;
+					animation: appear-bottom 0.2s 0.5s forwards;
+				}
+			}
+
+			.progressBar_container {
+				@include center();
+				flex-direction: column;
+				width: 90%;
+				.progressBar {
+					height: 3rem;
+					margin-top: 1rem;
+					width: 80%;
+					border-radius: $radius;
+					.bar {
+						height: 100%;
+						width: 0%;
+						border-radius: $radius;
+						transition: 0.5s ease-in-out;
+					}
+				}
+			}
+		}
+		.profileWorkouts_container {
+			height: 100%;
+			width: 65%;
+			border-radius: $radius;
+			padding: 1.5rem;
+		}
+	}
+}
+
+@media (max-width: $onMobile) {
+	.profile_userName {
+		flex-direction: column;
+		width: 100%;
+		height: fit-content !important;
+		font-size: 1.2rem;
+		margin: 1rem 0rem !important;
+		margin-bottom: 3rem !important;
+		background-color: transparentize($color: $gray, $amount: 0.5);
+		border-radius: $radius;
+		padding: 1rem;
+	}
+	.profileContent_container {
+		flex-direction: column;
+		gap: 3rem;
+	}
+	.profileStats_container {
+		width: 90% !important;
+
+		.progressBar_container,
+		.progressBar {
+			width: 100% !important;
+		}
+	}
+	.profileWorkouts_container {
+		width: 100% !important;
+	}
+}

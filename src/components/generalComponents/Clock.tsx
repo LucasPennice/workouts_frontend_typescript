@@ -48,12 +48,14 @@ const Clock = ({
 		return (
 			<section>
 				<GeneralButton
+					disabled={isTimerRunning ? true : false}
 					onClickFunction={() =>
 						modifyTime(i, 'left', task, timerValue, setTimerValue)
 					}
 					text={<IoIosArrowUp />}
 				/>
 				<GeneralButton
+					disabled={isTimerRunning ? true : false}
 					onClickFunction={() =>
 						modifyTime(i, 'right', task, timerValue, setTimerValue)
 					}

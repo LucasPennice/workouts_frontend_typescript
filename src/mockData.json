@@ -2,5 +2,24 @@
 	"userId": 12345,
 	"userName": "Lucas Pennice",
 	"points": 99,
-	"level": 6
+	"level": 6,
+	"isMetric": true,
+	"workouts": [
+		{
+			"name": "Biceps",
+			"preferredDay": "",
+			"exercises": [
+				{ "exerciseName": "bicep curls", "sets": 3, "reps": 12, "weight": 42 },
+				{ "exerciseName": "dominadas", "sets": 3, "reps": 12, "weight": 42 }
+			]
+		},
+		{
+			"name": "triceps",
+			"preferredDay": "",
+			"exercises": [
+				{ "exerciseName": "pushups", "sets": 3, "reps": 12, "weight": 42 },
+				{ "exerciseName": "bench press", "sets": 3, "reps": 12, "weight": 42 }
+			]
+		}
+	]
 }

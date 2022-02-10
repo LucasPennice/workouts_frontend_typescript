@@ -1,0 +1,19 @@
+@use '../index' as *;
+
+.generalBtn,
+.generalBtn_disabled {
+	@include generalButton();
+}
+.generalBtn_disabled {
+	opacity: 0.3 !important;
+
+	&:hover {
+		opacity: 0.3 !important;
+	}
+}
+
+@media (max-width: $onMobile) {
+	.generalBtn_disabled {
+		opacity: 0.3 !important;
+	}
+}

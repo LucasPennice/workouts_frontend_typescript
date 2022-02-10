@@ -1,4 +1,4 @@
-@use './index' as *;
+@use '../index' as *;
 
 .sideBar_container,
 .sideBar_container-closed {
@@ -57,4 +57,14 @@
 	opacity: 0;
 	transform: scale(0);
 	transition: opacity 0.15s 0s, transform 0s 0.15s;
+}
+
+@media (max-width: $onMobile) {
+	.sideBar_container,
+	.sideBar_container-closed {
+		justify-content: start;
+		padding-top: 4rem;
+		backdrop-filter: blur(10px);
+		width: 100vw;
+	}
 }

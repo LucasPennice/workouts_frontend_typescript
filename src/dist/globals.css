@@ -116,12 +116,54 @@
   transition: opacity 0.15s 0s, transform 0s 0.15s;
 }
 
+@media (max-width: 750px) {
+  .sideBar_container,
+.sideBar_container-closed {
+    justify-content: start;
+    padding-top: 4rem;
+    backdrop-filter: blur(10px);
+    width: 100vw;
+  }
+}
+.generalBtn,
+.generalBtn_disabled {
+  background-color: transparent;
+  border-width: 2px;
+  border-style: solid;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1rem;
+  color: inherit;
+  border-color: inherit;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.generalBtn:hover,
+.generalBtn_disabled:hover {
+  color: #f53838;
+  border-color: #f53838 !important;
+}
+
+.generalBtn_disabled {
+  opacity: 0.3 !important;
+}
+.generalBtn_disabled:hover {
+  opacity: 0.3 !important;
+}
+
+@media (max-width: 750px) {
+  .generalBtn_disabled {
+    opacity: 0.3 !important;
+  }
+}
 .profile_container {
   background-color: rgba(124, 124, 124, 0.5);
   backdrop-filter: blur(2px);
   border-radius: 0.5rem;
   width: 90%;
-  height: 90%;
+  min-height: 85vh;
   padding: 2rem;
 }
 .profile_container .profile_userName {
@@ -136,6 +178,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  justify-content: space-between;
   width: 100%;
   height: calc(100% - 3rem - 2rem);
 }
@@ -145,64 +188,96 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  justify-content: start;
+  justify-content: space-between;
+  flex-direction: column;
+  text-align: center;
+}
+.profile_container .profileContent_container .profileStats_container .userPieChartContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
 }
-.profile_container .profileContent_container .profileStats_container .pieChart_container {
+.profile_container .profileContent_container .profileStats_container .userPieChartContainer .pieChart {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 60%;
   margin-bottom: 1.5rem;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
 }
 .profile_container .profileContent_container .profileStats_container h2 {
   font-weight: 600;
   font-size: 1rem;
 }
+.profile_container .profileContent_container .profileStats_container .currentPoints {
+  margin: 3rem 0rem;
+}
+.profile_container .profileContent_container .profileStats_container .currentPoints span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  margin-top: 1rem;
+  padding: 0.2rem 0rem;
+  border-radius: 0.5rem;
+  animation: appear-bottom 0.2s 0.5s forwards;
+}
+.profile_container .profileContent_container .profileStats_container .progressBar_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 90%;
+}
+.profile_container .profileContent_container .profileStats_container .progressBar_container .progressBar {
+  height: 3rem;
+  margin-top: 1rem;
+  width: 80%;
+  border-radius: 0.5rem;
+}
+.profile_container .profileContent_container .profileStats_container .progressBar_container .progressBar .bar {
+  height: 100%;
+  width: 0%;
+  border-radius: 0.5rem;
+  transition: 0.5s ease-in-out;
+}
 .profile_container .profileContent_container .profileWorkouts_container {
   height: 100%;
-  width: 70%;
-  background-color: green;
+  width: 65%;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
 }
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
-}
+@media (max-width: 750px) {
+  .profile_userName {
+    flex-direction: column;
+    width: 100%;
+    height: fit-content !important;
+    font-size: 1.2rem;
+    margin: 1rem 0rem !important;
+    margin-bottom: 3rem !important;
+    background-color: rgba(124, 124, 124, 0.5);
+    border-radius: 0.5rem;
+    padding: 1rem;
+  }
 
-.mainAppContainer {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.3s;
-}
-.mainAppContainer .mainAppContent {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 98%;
-  height: 98%;
-  border-radius: 1rem;
-  transition: 0.3s;
-  position: relative;
-  animation: animatedBackground 300s linear infinite alternate;
-}
-.mainAppContainer .mainAppContent .toggleSideNav {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  font-size: 1rem;
-  padding: 0.8rem;
-  z-index: 5;
-}
+  .profileContent_container {
+    flex-direction: column;
+    gap: 3rem;
+  }
 
-@media (max-width: 500px) {
-  .mainAppContent {
-    animation: animatedBackground 100s linear infinite alternate !important;
+  .profileStats_container {
+    width: 90% !important;
+  }
+  .profileStats_container .progressBar_container,
+.profileStats_container .progressBar {
+    width: 100% !important;
+  }
+
+  .profileWorkouts_container {
+    width: 100% !important;
   }
 }
 .timer_container {
@@ -251,9 +326,53 @@
   gap: 1rem;
 }
 
+@media (max-width: 750px) {
+  .timer_container aside button {
+    opacity: 1;
+  }
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mainAppContainer {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+}
+.mainAppContainer .mainAppContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  transition: 0.3s;
+  position: relative;
+  animation: animatedBackground 300s linear infinite alternate;
+}
+.mainAppContainer .mainAppContent .toggleSideNav {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 1rem;
+  padding: 0.8rem;
+  z-index: 5;
+}
+
+@media (max-width: 750px) {
+  .mainAppContent {
+    animation: animatedBackground 100s linear infinite alternate !important;
+  }
+}
 .content_container {
   height: 100%;
-  width: 100%;
+  min-width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -261,6 +380,7 @@
   justify-content: space-evenly;
   animation: appear-bottom 0.3s;
   position: relative;
+  padding: 1rem 0rem;
 }
 
 .buttons_container {
@@ -287,25 +407,6 @@
 }
 .buttons_container a:hover,
 .buttons_container button:hover {
-  color: #f53838;
-  border-color: #f53838 !important;
-}
-
-.generalBtn {
-  background-color: transparent;
-  border-width: 2px;
-  border-style: solid;
-  padding: 1rem 2rem;
-  border-radius: 0.5rem;
-  font-weight: bold;
-  text-decoration: none;
-  font-size: 1rem;
-  color: inherit;
-  border-color: inherit;
-  cursor: pointer;
-  transition: 0.2s;
-}
-.generalBtn:hover {
   color: #f53838;
   border-color: #f53838 !important;
 }

@@ -1,0 +1,39 @@
+@use '../index' as *;
+
+.timer_container {
+	@include center();
+	font-size: 5rem;
+	font-weight: bold;
+	gap: 1rem;
+	cursor: default;
+
+	aside {
+		@include center();
+		flex-direction: column;
+
+		&:hover button {
+			transition: 0.2s;
+			opacity: 1;
+		}
+
+		button {
+			opacity: 0;
+			@include generalButton();
+			padding: 0.7rem;
+		}
+		section {
+			@include center();
+			gap: 1rem;
+		}
+	}
+}
+
+@media (max-width: $onMobile) {
+	.timer_container {
+		aside {
+			button {
+				opacity: 1;
+			}
+		}
+	}
+}

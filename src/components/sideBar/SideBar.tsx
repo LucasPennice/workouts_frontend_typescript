@@ -11,6 +11,7 @@ type AppProps = {
 	open: boolean;
 	currentTheme: any;
 	isUserLogged: boolean;
+	setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const colorModeIcons = {
@@ -24,6 +25,7 @@ const SideBar = ({
 	open,
 	currentTheme,
 	isUserLogged,
+	setOpen,
 }: AppProps) => {
 	const changeTheme = () => {
 		theme === 'dark' ? setTheme('light') : setTheme('dark');
@@ -39,6 +41,7 @@ const SideBar = ({
 		<div
 			className={open ? 'sideBar_container' : 'sideBar_container-closed'}
 			style={{ backgroundColor: `rgba(0,0,0,0.1)` }}
+			onClick={() => setOpen(false)}
 		>
 			<Link className={checkIfActive(HOME)} to={HOME}>
 				Home
