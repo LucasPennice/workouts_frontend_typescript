@@ -1,8 +1,9 @@
-type buttonProps = {
+interface buttonProps {
 	text: any;
 	onClickFunction: () => void;
 	disabled?: boolean;
-};
+	[key: string]: any;
+}
 const GeneralButton = ({
 	onClickFunction,
 	text,

@@ -19,6 +19,7 @@ interface Theme {
 	oursideColor: string;
 	shadowColor: string;
 	backgroundSvg: string;
+	[key: string]: any;
 }
 
 const lightTheme: Theme = {
@@ -48,6 +49,7 @@ const App = () => {
 	const [timerValue, setTimerValue] = useState(0);
 	const [cronometerValue, setCronometerValue] = useState(0);
 	const [isUserLogged, setIsUserLogged] = useState(true);
+	const [currentExerciseIndex, setCurrentExerciseIndex] = useState(0);
 	//REEMPLAZAR CON LA LOGICA DE VERDAD DESPUES
 	const { HOME, TIMER, CRONOMETER, MY_WORKOUTS, USER_PROFILE } = ROUTES;
 
@@ -85,7 +87,8 @@ const App = () => {
 							<MyWorkouts
 								theme={theme}
 								currentTheme={themes[theme]}
-								isUserLogged={isUserLogged}
+								currentExerciseIndex={currentExerciseIndex}
+								setCurrentExerciseIndex={setCurrentExerciseIndex}
 							/>
 						}
 					/>

@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import GeneralButton from './GeneralButton';
 
-type clockProps = {
+interface clockProps {
 	timerValue: number;
 	setTimerValue: any;
 	whenTimerRunning: () => void;
@@ -16,7 +16,8 @@ type clockProps = {
 	setIsTimerRunning: any;
 	isCronometer?: boolean;
 	displayButtons?: boolean;
-};
+	[key: string]: any;
+}
 
 const Clock = ({
 	timerValue,

@@ -3,10 +3,11 @@ import Clock from '../generalComponents/Clock';
 import { resetTimer } from '../timer/TimerLogic';
 import GeneralButton from '../generalComponents/GeneralButton';
 
-type cronometerProps = {
+interface cronometerProps {
 	cronometerValue: number;
 	setCronometerValue: React.Dispatch<React.SetStateAction<number>>;
-};
+	[key: string]: any;
+}
 
 const Cronometer = ({
 	cronometerValue,
